@@ -5,6 +5,7 @@ Ruby library for interating over segments in IO.  Avoids loading the entire stri
 Example: Find all ids from a JSON file.
 
 ```ruby
+require 'io-segmenter'
 file = File.open('large_json_stream_file.json')
 ids = IOSegmenter.new(file, '{', '}', '"', '\\').map do |segment|
   json_object = JSON.parse(segment)
@@ -15,6 +16,7 @@ file.close
 Example: Find all ids from an XML file.
 
 ```ruby
+require 'io-segmenter'
 file = File.open('large_file_of_xml_objects.xml)
 ids = IOSegmenter.new(file, '<item>', '</item>', nil, nil).map do |segment|
   xml = Nokogiri::XML(segment)
