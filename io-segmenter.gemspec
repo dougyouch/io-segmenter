@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'io-segmenter'
-  s.version     = '0.0.1'
+  s.version     = '0.5.0'
   s.summary     = 'IO Segemnter'
   s.description = 'Used to iterate over segments of data in IO objects'
   s.authors     = ['Doug Youch']
