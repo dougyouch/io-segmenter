@@ -31,6 +31,15 @@ end
 file.close
 ```
 
+IOSegmenter.new(io, starting_char, ending_char, quote_char, escape_char, max_read_size)
+
+**io**: IO object, required if using each method
+**starting_char**: string that indicates the beginning of the segment
+**ending_char**: string that indicates the ending of the segment
+**quote_char**: character indicating a quote, when used starting/ending strings are skipped over when inside quotes
+**escape_char**: character indicating to skip the next character
+**max_read_size**: amount of data to read from the IO object
+
 ### Contributing to packed-model
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
