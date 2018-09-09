@@ -2,7 +2,18 @@
 
 Ruby library for interating over segments in IO.  Avoids loading the entire string in to memory.  Instead it iterates over the file in chunks.  Identifying each chunk by it's opening and closing markers.
 
+Gemfile
 
+```ruby
+gem 'io-segmenter'
+
+# with core_ext
+gem 'io-segmenter', require: ['io-segmenter',
+                              'io-segmenter/core_ext/io',
+                              'io-segmenter/core_ext/file',
+                              'io-segmenter/core_ext/json'
+			     ]
+```
 
 Example: Find all ids from a JSON file.
 
@@ -106,7 +117,7 @@ end
 
 JSON.each_item(io, max_read_size)
 
-Iterate over JSON arrays of arrays.
+Iterate over JSON array of arrays.
 
 ```ruby
 require 'io-segmenter'
