@@ -4,7 +4,9 @@
 class IOSegmenter
   include Enumerable
 
-  def initialize(io, starting_char = '{', ending_char = '}', quote_char = '"', escape_char = '\\', max_read_size = 8192)
+  DEFAULT_READ_SIZE = 8192
+
+  def initialize(io, starting_char, ending_char, quote_char, escape_char, max_read_size=DEFAULT_READ_SIZE)
     @io = io
     @starting_char = starting_char
     @ending_char = ending_char

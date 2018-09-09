@@ -14,3 +14,6 @@ end
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'io-segmenter'
+require 'io-segmenter/core_ext/io'
+require 'io-segmenter/core_ext/file'
+require 'io-segmenter/core_ext/json'
