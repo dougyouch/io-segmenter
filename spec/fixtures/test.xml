@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items type="array">
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>{test}</name>
+      </test>
+    </foo>
+    <index type="integer">0</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test}</name>
+      </test>
+    </foo>
+    <index type="integer">1</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>{test</name>
+      </test>
+    </foo>
+    <index type="integer">2</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>tes"t</name>
+      </test>
+    </foo>
+    <index type="integer">3</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test{</name>
+      </test>
+    </foo>
+    <index type="integer">4</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">5</index>
+  </item>
+  <item>
+    <{foo}>
+      <bar} type="integer">2</bar}>
+      <tes{t>
+        <na{{me>foo \"</na{{me>
+      </tes{t>
+    </{foo}>
+    <index type="integer">6</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test\</name>
+      </test>
+    </foo>
+    <index type="integer">7</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">8</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">9</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">10</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">11</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">12</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">13</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">14</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">15</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">16</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">17</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">18</index>
+  </item>
+  <item>
+    <foo>
+      <bar type="integer">2</bar>
+      <test>
+        <name>test</name>
+      </test>
+    </foo>
+    <index type="integer">19</index>
+  </item>
+</items>

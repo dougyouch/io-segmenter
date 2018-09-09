@@ -1,0 +1,182 @@
+[
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "{test}"
+      }
+    },
+    "index": 0
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test}"
+      }
+    },
+    "index": 1
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "{test"
+      }
+    },
+    "index": 2
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "tes\"t"
+      }
+    },
+    "index": 3
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test{"
+      }
+    },
+    "index": 4
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 5
+  },
+  {
+    "{foo}": {
+      "bar}": 2,
+      "tes{t": {
+        "na{{me": "foo \\\""
+      }
+    },
+    "index": 6
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test\\"
+      }
+    },
+    "index": 7
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 8
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 9
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 10
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 11
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 12
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 13
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 14
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 15
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 16
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 17
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 18
+  },
+  {
+    "foo": {
+      "bar": 2,
+      "test": {
+        "name": "test"
+      }
+    },
+    "index": 19
+  }
+]
