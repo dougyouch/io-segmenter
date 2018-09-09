@@ -35,6 +35,6 @@ file.close
 
 ### Copyright
 
-Copyright (c) 2019 Doug Youch. See LICENSE.txt for
+Copyright (c) 2018 Doug Youch. See LICENSE.txt for
 further details.
 
