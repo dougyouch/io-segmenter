@@ -6,6 +6,8 @@ class IOSegmenter
 
   DEFAULT_READ_SIZE = 8192
 
+  attr_reader :buffer
+
   def initialize(io, starting_char, ending_char, quote_char, escape_char, max_read_size=DEFAULT_READ_SIZE)
     @io = io
     @starting_char = starting_char
@@ -24,19 +26,24 @@ class IOSegmenter
     terms.map! { |str| Regexp.escape(str) }
 
     @search = Regexp.new('(:?' + terms.join('|') + ')')
+    @buffer = String.new
   end
 
   def each
-    buffer = String.new
-
     until @io.eof?
-      buffer << @io.read(@max_read_size)
-      each_segment(buffer) do |segment|
+      unpack(@io.read(@max_read_size)) do |segment|
         yield segment
       end
     end
   end
 
+  def unpack(str)
+    @buffer << str
+    each_segment(@buffer) do |segment|
+      yield segment
+    end
+  end
+    
   def self.foreach(*args, &block)
     new(*args).each(&block)
   end

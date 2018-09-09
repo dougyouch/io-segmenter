@@ -2,10 +2,14 @@
 
 Ruby library for interating over segments in IO.  Avoids loading the entire string in to memory.  Instead it iterates over the file in chunks.  Identifying each chunk by it's opening and closing markers.
 
+
+
 Example: Find all ids from a JSON file.
 
 ```ruby
 require 'io-segmenter'
+require 'json'
+
 file = File.open('large_json_stream_file.json')
 ids = IOSegmenter.new(file, '{', '}', '"', '\\').map do |segment|
   json_object = JSON.parse(segment)
@@ -17,6 +21,8 @@ Example: Find all ids from an XML file.
 
 ```ruby
 require 'io-segmenter'
+require 'nokogiri'
+
 file = File.open('large_file_of_xml_objects.xml)
 ids = IOSegmenter.new(file, '<item>', '</item>', nil, nil).map do |segment|
   xml = Nokogiri::XML(segment)
