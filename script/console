@@ -4,4 +4,8 @@
 $LOAD_PATH << File.expand_path('../lib', __dir__)
 require File.basename(File.expand_path('..', __dir__))
 require 'irb'
+require 'json'
+require 'io-segmenter/core_ext/io'
+require 'io-segmenter/core_ext/file'
+require 'io-segmenter/core_ext/json'
 IRB.start(__FILE__)
