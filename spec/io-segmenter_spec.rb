@@ -4,7 +4,7 @@ require 'helper'
 require 'json'
 
 describe IOSegmenter do
-  context 'json parsing' do
+  context 'json object parsing' do
     let(:io) { File.open('spec/fixtures/test.json') }
     let(:starting_char) { '{' }
     let(:ending_char) { '}' }
@@ -33,6 +33,27 @@ describe IOSegmenter do
           indexes << JSON.parse(part)['index']
         end
         expect(indexes).to eq(expected_indexes)
+      end
+    end
+  end
+
+  context 'json string parsing' do
+    let(:io) { File.open('spec/fixtures/strings.json') }
+    let(:starting_char) { '"' }
+    let(:ending_char) { '"' }
+    let(:quote_char) { nil }
+    let(:escape_char) { '\\' }
+    let(:max_read_size) { 10 }
+    let(:splitter) { IOSegmenter.new(io, starting_char, ending_char, quote_char, escape_char, max_read_size) }
+    let(:expected_strings) { ['foo', 'bar', 'with quote \\"', 'with escaping \\\\ \\" \\\\', 'bar'] }
+
+    context 'each' do
+      it 'collects index values from the file' do
+        strings = []
+        splitter.each do |str|
+          strings << str.slice(1, str.size-2)
+        end
+        expect(strings).to eq(expected_strings)
       end
     end
   end
