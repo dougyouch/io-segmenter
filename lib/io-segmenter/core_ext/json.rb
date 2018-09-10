@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
 module JSON
-  def self.each_object(io, max_read_size=IOSegmenter::DEFAULT_READ_SIZE, &block)
-    IOSegmenter.new(io, '{', '}', '"', '\\', max_read_size).each do |segement|
+  def self.each_object(io, max_read_size=nil, &block)
+    IOSegmenter::Reader.new(io, IOSegmenter::Parser.new('{', '}', '"', '\\'), max_read_size || IOSegmenter::Reader::DEFAULT_READ_SIZE).each do |segement|
       yield parse(segement)
     end
   end
 
-  def self.each_string(io, max_read_size=IOSegmenter::DEFAULT_READ_SIZE)
-    IOSegmenter.new(io, '"', '"', nil, '\\', max_read_size).each do |segement|
+  def self.each_string(io, max_read_size=nil)
+    IOSegmenter::Reader.new(io, IOSegmenter::Parser.new('"', '"', nil, '\\'), max_read_size || IOSegmenter::Reader::DEFAULT_READ_SIZE).each do |segement|
       yield segement[1, segement.size-2]
     end
   end
 
-  def self.each_item(io, max_read_size=IOSegmenter::DEFAULT_READ_SIZE)
+  def self.each_list(io, max_read_size=nil)
     io.read(1)
-    IOSegmenter.new(io, '[', ']', '"', '\\', max_read_size).each do |segement|
+    IOSegmenter::Reader.new(io, IOSegmenter::Parser.new('[', ']', '"', '\\'), max_read_size || IOSegmenter::Reader::DEFAULT_READ_SIZE).each do |segement|
       yield parse(segement)
     end
   end

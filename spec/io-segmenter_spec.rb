@@ -4,6 +4,8 @@ require 'helper'
 require 'json'
 
 describe IOSegmenter do
+  let(:parser) { IOSegmenter::Parser.new(starting_char, ending_char, quote_char, escape_char) }
+
   context 'json object parsing' do
     let(:io) { File.open('spec/fixtures/test.json') }
     let(:starting_char) { '{' }
@@ -11,25 +13,25 @@ describe IOSegmenter do
     let(:quote_char) { '"' }
     let(:escape_char) { '\\' }
     let(:max_read_size) { 10 }
-    let(:splitter) { IOSegmenter.new(io, starting_char, ending_char, quote_char, escape_char, max_read_size) }
+    let(:reader) { IOSegmenter::Reader.new(io, parser, max_read_size) }
     let(:expected_indexes) { 20.times.to_a }
 
     it 'starting and ending elements are returned' do
-      part = splitter.first
+      part = reader.first
       expect(part[0, starting_char.size] == starting_char).to eq(true)
       expect(part[part.size - ending_char.size, ending_char.size] == ending_char).to eq(true)
     end
 
     context 'each' do
       it 'collects index values from the file' do
-        expect(splitter.map { |part| JSON.parse(part)['index'] }).to eq(expected_indexes)
+        expect(reader.map { |part| JSON.parse(part)['index'] }).to eq(expected_indexes)
       end
     end
 
     context 'foreach' do
       it 'collects index values from the file' do
         indexes = []
-        IOSegmenter.foreach(io, starting_char, ending_char, quote_char, escape_char, max_read_size) do |part|
+        IOSegmenter::Reader.foreach(io, parser, max_read_size) do |part|
           indexes << JSON.parse(part)['index']
         end
         expect(indexes).to eq(expected_indexes)
@@ -44,13 +46,13 @@ describe IOSegmenter do
     let(:quote_char) { nil }
     let(:escape_char) { '\\' }
     let(:max_read_size) { 10 }
-    let(:splitter) { IOSegmenter.new(io, starting_char, ending_char, quote_char, escape_char, max_read_size) }
+    let(:reader) { IOSegmenter::Reader.new(io, parser, max_read_size) }
     let(:expected_strings) { ['foo', 'bar', 'with quote \\"', 'with escaping \\\\ \\" \\\\', 'bar'] }
 
     context 'each' do
       it 'collects index values from the file' do
         strings = []
-        splitter.each do |str|
+        reader.each do |str|
           strings << str.slice(1, str.size-2)
         end
         expect(strings).to eq(expected_strings)
@@ -65,25 +67,25 @@ describe IOSegmenter do
     let(:quote_char) { nil }
     let(:escape_char) { nil }
     let(:max_read_size) { 10 }
-    let(:splitter) { IOSegmenter.new(io, starting_char, ending_char, quote_char, escape_char, max_read_size) }
+    let(:reader) { IOSegmenter::Reader.new(io, parser, max_read_size) }
     let(:expected_indexes) { 20.times.to_a }
 
     it 'starting and ending elements are returned' do
-      part = splitter.first
+      part = reader.first
       expect(part[0, starting_char.size] == starting_char).to eq(true)
       expect(part[part.size - ending_char.size, ending_char.size] == ending_char).to eq(true)
     end
 
     context 'each' do
       it 'collects index values from the file' do
-        expect(splitter.map { |part| part =~ /<index type="integer">(\d+)<\/index>/; $1.to_i }).to eq(expected_indexes)
+        expect(reader.map { |part| part =~ /<index type="integer">(\d+)<\/index>/; $1.to_i }).to eq(expected_indexes)
       end
     end
 
     context 'foreach' do
       it 'collects index values from the file' do
         indexes = []
-        IOSegmenter.foreach(io, starting_char, ending_char, quote_char, escape_char, max_read_size) do |part|
+        IOSegmenter::Reader.foreach(io, parser, max_read_size) do |part|
           part =~ /<index type="integer">(\d+)<\/index>/
           indexes << $1.to_i
         end

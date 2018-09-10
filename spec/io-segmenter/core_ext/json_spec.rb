@@ -35,7 +35,7 @@ describe 'IOSegmenter::CoreExt::JSON' do
 
     it 'collects index values from the file' do
       list = []
-      JSON.each_item(io) do |str|
+      JSON.each_list(io) do |str|
         list << str
       end
       expect(list).to eq(expected_list)
