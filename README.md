@@ -1,6 +1,6 @@
 # io-segmenter
 
-Ruby library for interating over segments in IO.  Avoids loading the entire string in to memory.  Instead it iterates over the file in segments.  Identifying each segment by it's opening and closing markers.
+Ruby library for interating over segments in IO.  Avoids loading the entire file in to memory.  Instead it iterates over the file in segments.  Identifying each segment by it's opening and closing markers.
 
 Gemfile
 
