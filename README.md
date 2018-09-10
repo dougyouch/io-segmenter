@@ -22,7 +22,8 @@ require 'io-segmenter'
 require 'json'
 
 file = File.open('large_json_stream_file.json')
-ids = IOSegmenter.new(file, '{', '}', '"', '\\').map do |segment|
+parser = IOSegmenter::Parser.new('{', '}', '"', '\\')
+ids = IOSegmenter::Reader.new(file, parser).map do |segment|
   json_object = JSON.parse(segment)
   json_object['id']
 end
@@ -35,23 +36,56 @@ require 'io-segmenter'
 require 'nokogiri'
 
 file = File.open('large_file_of_xml_objects.xml)
-ids = IOSegmenter.new(file, '<item>', '</item>', nil, nil).map do |segment|
+parser = IOSegmenter::Parser.new('<item>', '</item>', nil, nil)
+ids = IOSegmenter.new(file, parser).map do |segment|
   xml = Nokogiri::XML(segment)
   xml.at_xpath('item/id').content.to_i
 end
 file.close
 ```
 
+Example: Transform json file
+
 ```ruby
-IOSegmenter.new(io, starting_char, ending_char, quote_char, escape_char, max_read_size)
+require 'io-segmenter'
+require 'json'
+
+File.open('transforms.json', 'wb') do |output|
+  IOSegmenter::Writer.write(output, '[', ']', ',') do |writer|
+    File.open('large_json_stream_file.json') do |input|
+      JSON.each_object(input) do |json_object|
+        writer.write(transform(json_object).to_json)
+      end
+    end
+  end
+end
 ```
 
-* **io**: IO object, required if using each method
+```ruby
+IOSegmenter::Parser.new(starting_char, ending_char, quote_char, escape_char)
+```
+
 * **starting_char**: string that indicates the beginning of the segment
 * **ending_char**: string that indicates the ending of the segment
 * **quote_char**: character indicating a quote, when used starting/ending strings are skipped over when inside quotes
 * **escape_char**: character indicating to skip the next character
+
+```ruby
+IOSegmenter::Reader.new(io, parser, max_read_size)
+```
+
+* **io**: read from this IO object
+* **parser**: IOSegmenter::Parser used to detect segments
 * **max_read_size**: amount of data to read from the IO object
+
+```ruby
+IOSegmenter::Writer.write(io, header, footer, separator)
+```
+
+* **io**: write to this IO object
+* **header**: string to write before adding segements
+* **footer**: string to write after adding all segements
+* **separator**: string to add after the first write
 
 ### Core-Ext
 
