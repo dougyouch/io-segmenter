@@ -3,4 +3,5 @@
 module IOSegmenter
   autoload :Parser, 'io-segmenter/parser'
   autoload :Reader, 'io-segmenter/reader'
+  autoload :Writer, 'io-segmenter/writer'
 end

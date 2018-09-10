@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'bundler'
+require 'json'
 
 begin
   Bundler.setup(:default, :development, :spec)

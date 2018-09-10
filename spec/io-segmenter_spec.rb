@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'helper'
-require 'json'
 
 describe IOSegmenter do
   let(:parser) { IOSegmenter::Parser.new(starting_char, ending_char, quote_char, escape_char) }
