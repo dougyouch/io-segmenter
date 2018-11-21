@@ -19,7 +19,7 @@ module IOSegmenter
       terms.compact!
       terms.map! { |str| Regexp.escape(str) }
 
-      @search = Regexp.new('(:?' + terms.join('|') + ')')
+      @search = Regexp.new('(?:' + terms.join('|') + ')')
       @buffer = String.new
     end
 
