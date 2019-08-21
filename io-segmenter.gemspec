@@ -5,6 +5,7 @@ Gem::Specification.new do |s|
   s.version     = '0.7.6'
   s.summary     = 'IO Segemnter'
   s.description = 'Used to iterate over segments of data in IO objects'
+  s.licenses    = ['MIT']
   s.authors     = ['Doug Youch']
   s.email       = 'dougyouch@gmail.com'
   s.homepage    = 'https://github.com/dougyouch/io-segemnter'
